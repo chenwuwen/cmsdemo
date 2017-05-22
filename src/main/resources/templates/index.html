@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script type="text/javascript"
+            src="../jquery-easyui-1.5.2/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="../jquery-easyui-1.5.2/jquery.cookie.js"></script>
+    <!-- 引入EasyUI -->
+    <script type="text/javascript"
+            src="../jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+    <!-- 引入EasyUI的中文国际化js，让EasyUI支持中文 -->
+    <script type="text/javascript"
+            src="../jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js"></script>
+    <!-- 引入EasyUI的样式文件-->
+    <link rel="stylesheet"
+          href="../jquery-easyui-1.5.2/themes/bootstrap/easyui.css" type="text/css"/>
+    <!--<link rel="stylesheet"  id="easyuiTheme"-->
+    <!--href="../jquery-easyui-1.5.2/themes/<%=easyuiThemeName%>/easyui.css" type="text/css"/>-->
+    <!-- 引入EasyUI的图标样式文件-->
+    <link rel="stylesheet" href="../jquery-easyui-1.5.2/themes/icon.css"
+          type="text/css"/>
+    <link rel="stylesheet" href="../css/index.css" type="text/css"/>
+
+    <!--引入HighChars图表插件-->
+    <script src="../Highcharts-5.0.11/code/highcharts.js"></script>
+    <script src="../Highcharts-5.0.11/code/modules/exporting.js"></script>
+    <script src="../Highcharts-5.0.11/code/modules/data.js"></script>
+    <script src="../Highcharts-5.0.11/code/modules/highcharts-zh_CN.js"></script>
+    <script src="../Highcharts-5.0.11/code/themes/dark-unica.js"></script>
+
+</head>
+<body class="easyui-layout">
+<!-- begin of header -->
+<div class="wu-header" region="north" split="true" border="false">
+    <div class="wu-header-left">
+        <h1>EasyUI Web Admin</h1>
+    </div>
+    <div class="wu-header-right">
+        <p><strong class="easyui-tooltip" title="2条未读消息">admin</strong>，欢迎您！</p>
+        <p><a href="#">网站首页</a>|<a href="#">支持论坛</a>|<a href="#">帮助中心</a>|<a href="#">安全退出</a></p>
+    </div>
+</div>
+<!-- end of header -->
+<!-- begin of sidebar -->
+<div class="wu-sidebar" region="west" split="true" border="true" title="导航菜单">
+    <div class="easyui-accordion" data-options="border:false,fit:true">
+        <div title="快捷菜单" data-options="iconCls:'icon-application-cascade'" style="padding:5px;">
+            <ul class="easyui-tree wu-side-tree">
+                <li iconCls="icon-chart-organisation"><a href="javascript:void(0)" data-icon="icon-chart-organisation"
+                                                         data-link="temp/layout-2.html" iframe="0">菜单导航</a></li>
+                <li iconCls="icon-man"><a href="javascript:void(0)" data-icon="icon-man"
+                                          data-link="temp/layout-4.html" iframe="0">用户管理</a></li>
+                <li iconCls="icon-large-clipart"><a href="javascript:void(0)" data-icon="icon-large-clipart"
+                                                    data-link="temp/layout-3.html" iframe="0">角色管理</a></li>
+                <li iconCls="icon-large-shapes"><a href="javascript:void(0)" data-icon="icon-large-shapes"
+                                                   data-link="temp/layout-3.html" iframe="0">数据字典</a></li>
+                <li iconCls="icon-cog"><a href="javascript:void(0)" data-icon="icon-cog" data-link="temp/layout-3.html"
+                                          iframe="0">系统参数</a></li>
+                <li iconCls="icon-application-osx-error"><a href="javascript:void(0)"
+                                                            data-icon="icon-application-osx-error"
+                                                            data-link="temp/layout-3.html" iframe="0">操作日志</a></li>
+            </ul>
+        </div>
+
+        <div title="系统设置" data-options="iconCls:'icon-wrench'" style="padding:5px;">
+            <ul class="easyui-tree wu-side-tree">
+                <li iconCls="icon-chart-organisation"><a href="javascript:void(0)" data-icon="icon-chart-organisation"
+                                                         data-link="layout-3.html" iframe="0">导航标题</a></li>
+                <li iconCls="icon-users"><a href="javascript:void(0)" data-icon="icon-users"
+                                            data-link="temp/layout-3.html" iframe="0">导航标题</a></li>
+                <li iconCls="icon-user-group"><a href="javascript:void(0)" data-icon="icon-user-group"
+                                                 data-link="temp/layout-3.html" iframe="0">导航标题</a></li>
+                <li iconCls="icon-book"><a href="javascript:void(0)" data-icon="icon-book"
+                                           data-link="temp/layout-3.html" iframe="0">导航标题</a></li>
+                <li iconCls="icon-cog"><a href="javascript:void(0)" data-icon="icon-cog" data-link="temp/layout-3.html"
+                                          iframe="0">导航标题</a></li>
+                <li iconCls="icon-application-osx-error"><a href="javascript:void(0)"
+                                                            data-icon="icon-application-osx-error"
+                                                            data-link="temp/layout-3.html" iframe="0">导航标题</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- end of sidebar -->
+<!-- begin of main -->
+<div class="wu-main" region="center">
+    <div id="wu-tabs" class="easyui-tabs" data-options="border:false,fit:true,tools:'#tab-tools'" >
+        <div title="首页" data-options="href:'temp/layout-5.html',closable:false,iconCls:'icon-large-chart',cls:'pd3'">
+
+        </div>
+        <div id="tab-tools">
+            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-help"></a>
+            <a href="#" class="easyui-menubutton" plain="true" iconCls="icon-switch-themes" data-options="menu:'#mm'"></a>
+        </div>
+        <div id="mm" style="width:150px;">
+            <div onclick="changeTheme('default');">default</div>
+            <div onclick="changeTheme('black');">black</div>
+            <div onclick="changeTheme('bootstrap');">bootstrap</div>
+            <div onclick="changeTheme('gray');">gray</div>
+            <div onclick="changeTheme('metro');">metro</div>
+            <div onclick="changeTheme('ui-cupertino');">ui-cupertino</div>
+            <div onclick="changeTheme('ui-dark-hive');">ui-dark-hive</div>
+            <div onclick="changeTheme('ui-pepper-grinder');">ui-pepper-grinder</div>
+            <div onclick="changeTheme('ui-sunny');">ui-sunny</div>
+        </div>
+
+    </div>
+</div>
+<!-- end of main -->
+<!-- begin of footer -->
+<div class="wu-footer" region="south" split="true" border="true">
+    &copy; 这是南区域
+</div>
+<!-- end of footer -->
+<script type="text/javascript">
+    $(function () {
+        $('.wu-side-tree a').bind("click", function () {
+            var title = $(this).text();
+            var url = $(this).attr('data-link');
+            var iconCls = $(this).attr('data-icon');
+            var iframe = $(this).attr('iframe') == 1 ? true : false;
+            addTab(title, url, iconCls, iframe);
+        });
+    })
+
+    /**
+     * Name 载入树形菜单
+     */
+    $('#wu-side-tree').tree({
+        url: 'temp/menu.php',
+        cache: false,
+        onClick: function (node) {
+            var url = node.attributes['url'];
+            if (url == null || url == "") {
+                return false;
+            }
+            else {
+                addTab(node.text, url, '', node.attributes['iframe']);
+            }
+        }
+    });
+
+    /**
+     * Name 选项卡初始化,两种方式床架tab-tools,一种通过js方式创建,一种自定义div
+     */
+//    $('#wu-tabs').tabs({
+//        tools: [{
+//            iconCls: 'icon-switch-themes',
+//            border: false,
+//            handler: function () {
+//               switchThemes();
+//            }
+//        },{
+//        iconCls:'icon-help',
+//        handler:function(){
+//            $.messager.alert('info','This is a help Message','info');
+//        }
+//        }]
+//        tools: '#tab-tools'
+//    });
+
+    function switchThemes() {
+        alert("切换皮肤");
+
+    }
+
+
+
+
+    /**
+     * Name 添加菜单选项
+     * Param title 名称
+     * Param href 链接
+     * Param iconCls 图标样式
+     * Param iframe 链接跳转方式（true为iframe，false为href）
+     */
+    function addTab(title, href, iconCls, iframe) {
+        var tabPanel = $('#wu-tabs');
+        if (!tabPanel.tabs('exists', title)) { //如果tab已经存在,则选中并刷新该tab
+            var content = '<iframe scrolling="auto" frameborder="0"  src="' + href + '" style="width:100%;height:100%;"></iframe>';
+            if (iframe) {
+                tabPanel.tabs('add', {
+                    title: title,
+                    content: content,
+                    iconCls: iconCls,
+                    fit: true,
+                    cls: 'pd3',
+                    closable: true
+                });
+            }
+            else {
+                tabPanel.tabs('add', {
+                    title: title,
+                    href: href,
+                    iconCls: iconCls,
+                    fit: true,
+                    cls: 'pd3',
+                    closable: true
+                });
+            }
+        }
+        else {
+            tabPanel.tabs('select', title);
+        }
+    }
+    /**
+     * Name 移除菜单选项
+     */
+    function removeTab() {
+        var tabPanel = $('#wu-tabs');
+        var tab = tabPanel.tabs('getSelected');
+        if (tab) {
+            var index = tabPanel.tabs('getTabIndex', tab);
+            tabPanel.tabs('close', index);
+        }
+    }
+</script>
+</body>
+</html>

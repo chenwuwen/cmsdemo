@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery-easyui-1.5.2/jquery.min.js"></script>
+    <!-- 引入EasyUI -->
+    <script type="text/javascript" src="../jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+    <!-- 引入EasyUI的中文国际化js，让EasyUI支持中文 -->
+    <script type="text/javascript" src="../jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js"></script>
+    <!-- 引入EasyUI的样式文件-->
+    <link rel="stylesheet" href="../jquery-easyui-1.5.2/themes/default/easyui.css" type="text/css"/>
+    <!-- 引入EasyUI的图标样式文件-->
+    <link rel="stylesheet" href="../jquery-easyui-1.5.2/themes/icon.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/login.css" type="text/css"/>
+    <script type="text/javascript" charset="utf-8">
+        var loginDialog;
+        $(function() {
+            loginDialog = $('#loginDialog').show().dialog({
+                id: 'loginBtn',
+                modal : true,
+                closable : false,
+                draggable : false,
+                buttons : [ {
+                    text : '登录',
+                    /* disabled : true, */
+                    handler : function() {
+                        loginFun();
+                    }
+                } ]
+            });
+            
+            /*目的是，如果已经登陆过了，那么刷新页面后也不需要弹出登录窗体*/
+    /*         var sessionInfo_userId = '${sessionInfo.id}';
+            if (sessionInfo_userId) {
+                loginDialog.dialog('close');
+            }  */
+
+            $('#loginDialog input').keyup(function(event) {
+                if (event.keyCode == '13') {
+                    loginFun();
+                }
+            });
+
+/*             //登陆按钮前添加图形验证码
+            var $verifyInput = $('<input class="verify-input" id="verifyInput" name="code" maxlength="6"/>');
+            var $verifyImg = $('<img src="${pageContext.request.contextPath}/captchaServlet" id="verifyImg" class="verify-img"/>');
+            $('.dialog-button').prepend($verifyInput).prepend($verifyImg);
+
+            //对图形验证码添加事件
+            $verifyImg.on('click', function() {
+                $(this).attr('src', '${pageContext.request.contextPath}/captchaServlet');
+            });
+
+            $verifyInput.keydown(function() {
+                return $('#form-body').form('validate');
+            }).keyup(function() {
+                var target = this;
+                if (target.value.length === 6) {
+                    target.disabled = true;
+                    $(target).blur();
+                    $.post('${pageContext.request.contextPath}/userController/verifyCode', {
+                        code: this.value
+                    }, function(result) {
+                        if (result.success) {
+                            //$('#loginBtn').linkbutton('enable').click();//登陆
+                            loginFun();
+                        } else {
+                            target.disabled = false;
+                            $(target).focus().val('');
+                            $verifyImg.click();
+                        }
+                    }, 'JSON').error(function() {
+                        target.disabled = false;
+                        $(target).focus().val('');
+                        $verifyImg.click();
+                    });
+                }
+            });
+        }); */
+
+          function loginFun() {
+            if ($('#form-body').form('validate')) {//validate方式，未使用form方式提交表单，该语句必须写
+                $.post('/login', $('#form-body').serialize(), function(result) {
+                    if (result.success) {
+                    	if(result.success=='a'){
+                        $('#loginDialog').dialog('close');
+                        location.replace('/index');
+							console.log(result);
+                    	}else{
+                    		 $.messager.alert('错误', '用户名或密码出错', 'error');
+                    	}
+                    } else {
+                        $.messager.alert('错误', '系统出错', 'error');
+                    }
+                    parent.$.messager.progress('close');
+                }, "JSON");
+            }
+        } 
+        
+/*         function loginFun() {
+        	var name =  $('#name').val();
+        	var password =  $('#password').val();
+        	alert(name);
+            $('#form-body').form('submit', {
+         		url:'/login'
+            }
+        };  */
+
+        }) 
+    </script>
+</head>
+<body>
+<div id="loginDialog" title=" " style="width: 500px; height: 300px; overflow: hidden; display: none;">
+    <div title="用户输入模式" style="overflow: hidden; padding: 15px;">
+        <form id="form-body" method="post">
+            <ul>
+                <li>账	号 <input id="name" class="easyui-validatebox account form-textbox" type="text" name="name" value='larry' required="required" /></li>
+                <li>密	码 <input id="password" class="easyui-validatebox  password form-textbox" type="password" name="pwd" value='1234' required="required" /></li>
+            </ul>
+        </form>
+        <div id="logo">
+            <h1>SpringBoot+EasyUI</h1>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
