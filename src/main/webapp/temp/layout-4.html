@@ -1,7 +1,7 @@
 <div class="easyui-layout" data-options="fit:true">
     <div region="center">
         <div id="yglb"></div>
-
+        <!--datagrid上的工具条-->
         <div id="tb" style="padding: 5px; height: auto">
             <div style="margin-bottom: 5px" class="toolbar">
                 <a href="#" class="easyui-linkbutton" iconCls="icon-add"
@@ -79,369 +79,386 @@
                     href="javascript:void(0)" class="easyui-linkbutton" id="resetBtn"
                     style="width: 100px;">清空</a>
             </div>
+        </div>
+        <!-- 修改用户面板 -->
+        <div id="updUser" class="easyui-dialog" title="修改用户" closed="true">
+            <form id="fu" method="post">
+                <table cellpadding="5">
+                    <tr id="test">
+                        <td>id:</td>
+                        <td><input class="easyui-textbox" type="text" name="id"
+                                   id="udpId" data-options="required:true,readonly:true"></input></td>
+                    </tr>
+                    <tr>
+                        <td>用户名:</td>
+                        <td><input class="easyui-textbox" type="text" name="name"
+                                   id="name" data-options="required:true,readonly:true"></input></td>
+                    </tr>
+                    <tr>
+                        <td>密码:</td>
+                        <td><input class="easyui-textbox" type="password" name="pwd"
+                                   id="pwd" data-options="required:true,validType:'password'"></input></td>
+                    </tr>
+                    <tr>
+                        <td>年龄:</td>
+                        <td><input class="easyui-textbox" type="text" name="age"
+                                   id="age" data-options="required:true,validType:'number'"></input></td>
+                    </tr>
+                    <tr>
+                        <td>性别:</td>
+                        <td><input class="upSex" type="radio" name="sex" value="男">男</input>
+                            <input class="upSex" type="radio" name="sex" value="女">女</input></td>
+                    </tr>
+                    <tr>
+                        <td>职位:</td>
+                        <td>
 
-            <!-- 修改用户面板 -->
-            <div id="updUser" class="easyui-dialog" title="修改用户" closed="true">
-                <form id="fu" method="post">
-                    <table cellpadding="5">
-                        <tr id="test">
-                            <td>id:</td>
-                            <td><input class="easyui-textbox" type="text" name="id"
-                                       id="udpId" data-options="required:true,readonly:true"></input></td>
-                        </tr>
-                        <tr>
-                            <td>用户名:</td>
-                            <td><input class="easyui-textbox" type="text" name="name"
-                                       id="name" data-options="required:true,readonly:true"></input></td>
-                        </tr>
-                        <tr>
-                            <td>密码:</td>
-                            <td><input class="easyui-textbox" type="password" name="pwd"
-                                       id="pwd" data-options="required:true,validType:'password'"></input></td>
-                        </tr>
-                        <tr>
-                            <td>年龄:</td>
-                            <td><input class="easyui-textbox" type="text" name="age"
-                                       id="age" data-options="required:true,validType:'number'"></input></td>
-                        </tr>
-                        <tr>
-                            <td>性别:</td>
-                            <td><input class="upSex" type="radio" name="sex" value="男">男</input>
-                                <input class="upSex" type="radio" name="sex" value="女">女</input></td>
-                        </tr>
-                        <tr>
-                            <td>职位:</td>
-                            <td>
-                                <!--<select id=”cc” class=”easyui-combobox” name="status"-->
-                                <!--style="width: 200px;">-->
-                                <!--<option value="0">-&#45;&#45;请选择职位-&#45;&#45;</option>-->
-                                <!--<option value="1">员工</option>-->
-                                <!--<option value="2">领导</option>-->
-                                <!--</select>-->
-                                <input class="easyui-combobox" name="status"
-                                       url="/getposition" valueField="positionId"
-                                       textField="positionName" panelHeight="auto"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>入职日期:</td>
-                            <td><input class="easyui-datetimebox" name="inductionTime"
-                                       id="setTime" style="width: auto" required="required"
-                                       showSeconds="true"/></td>
-                        </tr>
-                    </table>
-                </form>
-                <div style="text-align: center; padding: 5px">
-                    <a href="javascript:void(0)" class="easyui-linkbutton"
-                       id="submitBtn2" style="width: 100px;">提交</a> <a
-                        href="javascript:void(0)" class="easyui-linkbutton" id="resetBtn2"
-                        style="width: 100px;">清空</a>
-                </div>
-                <!--右键菜单-->
-                <div id="menu" class="easyui-menu"
-                     style="width: 30px; display: none;">
-                    <!--放置一个隐藏的菜单Div-->
-                    <div id="btn_upd" data-options="iconCls:'icon-edit'"
-                         onclick="upd()">编辑
-                    </div>
-                    <div id="btn_del" data-options="iconCls:'icon-remove'"
-                         onclick="del()">删除
-                    </div>
-                    <div id="btn_add" data-options="iconCls:'icon-add'"
-                         onclick="addUser()">增加
-                    </div>
-                </div>
+                            <input class="easyui-combobox" name="status"
+                                   url="/getposition" valueField="positionId"
+                                   textField="positionName" panelHeight="auto"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>入职日期:</td>
+                        <td><input class="easyui-datetimebox" name="inductionTime"
+                                   id="setTime" style="width: auto" required="required"
+                                   showSeconds="true"/></td>
+                    </tr>
+                </table>
+            </form>
+            <div style="text-align: center; padding: 5px">
+                <a href="javascript:void(0)" class="easyui-linkbutton"
+                   id="submitBtn2" style="width: 100px;">提交</a> <a
+                    href="javascript:void(0)" class="easyui-linkbutton" id="resetBtn2"
+                    style="width: 100px;">清空</a>
             </div>
 
         </div>
+
     </div>
-    <script type="text/javascript">
-        $(function () {
-            $('#yglb').datagrid({
-                url: "/yglb",
-                title: "员工（职员）列表",
-                pagination: true,// 是否分页
-                pageSize: 12,//条数
-                pageList: [3, 6, 12],//选择条数
-                fit: true,//大自动适应
-                selectOnCheck: true,//如果设置为true，单击一个复选框，将始终选择行。如果为false，不会选择行选中该复选框。
-                loadMsg: "正在加载员工（职员）数据，请稍等...",
-                fitColumn: false, //列自适应宽度
-                /* 			width : 'auto',
-                 height : 'auto', */
+    <!--右键菜单-->
+    <div id="menu" class="easyui-menu"
+         style="width: 30px; display: none;">
+        <!--放置一个隐藏的菜单Div-->
+        <div id="btn_upd" data-options="iconCls:'icon-edit'"
+             onclick="upd()">编辑
+        </div>
+        <div id="btn_del" data-options="iconCls:'icon-remove'"
+             onclick="del()">删除
+        </div>
+        <div id="btn_add" data-options="iconCls:'icon-add'"
+             onclick="addUser()">增加
+        </div>
+        <div id="btn_ret" data-options="iconCls:'icon-query'"
+             onclick="retUser()">详细信息
+        </div>
+    </div>
+    <!--查看用户详细信息-->
+    <div id="xzUser" class="easyui-window" closed="true" style="width:500px;height:500px;" title="用户详细信息" data-options="minimizable:false,maximizable:false,resizable:true">
+    <div id="ttUser" class="easyui-tabs" style="width:500px;height:250px;" data-options="fit:true">
+        <div title="基本信息" style="padding:20px;display:none;">
+            tab1
+        </div>
+        <div title="工作履历" data-options="closable:false" style="overflow:auto;padding:20px;display:none;">
+            tab2
+        </div>
+        <div title="其他信息" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">
+            tab3
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#yglb').datagrid({
+            url: "/yglb",
+            title: "员工（职员）列表",
+            pagination: true,// 是否分页
+            pageSize: 12,//条数
+            pageList: [3, 6, 12],//选择条数
+            fit: true,//大自动适应
+            selectOnCheck: true,//如果设置为true，单击一个复选框，将始终选择行。如果为false，不会选择行选中该复选框。
+            loadMsg: "正在加载员工（职员）数据，请稍等...",
+            fitColumn: false, //列自适应宽度
+            /* 			width : 'auto',
+             height : 'auto', */
 
-                /* idField : 'Id', */
-                //			singleSelect : true,
-                striped: true,
-                rownumbers: true,
-                columns: [[{
-                    title: '主键',
-                    field: 'Id',
-                    //				hidden : true,
-                    checkbox: true
-                }, {
-                    title: '姓名',
-                    field: 'name',
-                }, {
-                    title: '密码',
-                    field: 'pwd',
-                    align: 'center'
-                }, {
-                    title: '年龄',
-                    field: 'age',
-                    align: "center",
-                }, {
-                    title: '性别',
-                    field: 'sex',
-                }, {
-                    title: '状态',
-                    field: 'status',
-                    formatter: function (value) {
-                        if (value == "1") {
-                            return '领导';
-                        } else if (value == "2") {
-                            return '员工';
-                        } else {
-                            return '未设置';
-                        }
+            /* idField : 'Id', */
+            //			singleSelect : true,
+            striped: true,
+            rownumbers: true,
+            columns: [[{
+                title: '主键',
+                field: 'Id',
+                //				hidden : true,
+                checkbox: true
+            }, {
+                title: '姓名',
+                field: 'name',
+            }, {
+                title: '密码',
+                field: 'pwd',
+                align: 'center'
+            }, {
+                title: '年龄',
+                field: 'age',
+                align: "center",
+            }, {
+                title: '性别',
+                field: 'sex',
+            }, {
+                title: '状态',
+                field: 'status',
+                formatter: function (value) {
+                    if (value == "1") {
+                        return '领导';
+                    } else if (value == "2") {
+                        return '员工';
+                    } else {
+                        return '未设置';
                     }
-                }, {
-                    title: '入职时间',
-                    field: 'inductionTime',
+                }
+            }, {
+                title: '入职时间',
+                field: 'inductionTime',
 
-                }]],
-                rowStyler: function (index, row, css) {
-                    if (row.UserId != "") {
-                        return 'font-weight:bold;';
-                    }
-                },
-                onLoadSuccess: function (data) {
-                    if (data.rows.length > 0) {
-                        $('#yglb').datagrid("selectRow", -1);
-                    }
-                },
-                toolbar: '#tb',
-                onLoadSuccess: function () {
+            }]],
+            rowStyler: function (index, row, css) {
+                if (row.UserId != "") {
+                    return 'font-weight:bold;';
+                }
+            },
+            onLoadSuccess: function (data) {
+                if (data.rows.length > 0) {
                     $('#yglb').datagrid("selectRow", -1);
                 }
-
-            });
-            $('#resetBtn').click(function () {
-                console.info('点了清空按钮');
-                $('#ff').form('clear');
-            })
-            $('#resetBtn2').click(function () {
-
-                $("#age").textbox('setValue', '');
-                $("#pwd").textbox('setValue', '');
-                $('#cc').combobox('setValue', '');
-                $('#setTime').datetimebox('setValue', '');
-            })
-
-            $('#submitBtn').click(function () {
-                addUserCommit();
-            })
-            $('#submitBtn2').click(function () {
-                udpUserCommit();
-            })
+            },
+            toolbar: '#tb',
+            onLoadSuccess: function () {
+                $('#yglb').datagrid("selectRow", -1);
+            }
 
         });
-
-        $("#yglb").datagrid({
-            onRowContextMenu: function (e, rowIndex, rowData) { //右键时触发事件
-                //三个参数：e里面的内容很多，真心不明白，rowIndex就是当前点击时所在行的索引，rowData当前行的数据
-                e.preventDefault(); //阻止浏览器捕获右键事件
-                $(this).datagrid("clearSelections"); //取消所有选中项
-                $(this).datagrid("selectRow", rowIndex); //根据索引选中该行
-                $('#menu').menu('show', {
-                    //显示右键菜单
-                    left: e.pageX,//在鼠标点击处显示菜单
-                    top: e.pageY
-                });
-                e.preventDefault(); //阻止浏览器自带的右键菜单弹出
-            }
-        });
-
-        /* 删除用户 */
-        function del(index) { //删除操作
-            //修改时要获取选择到的行 getSelections
-            var rows = $("#yglb").datagrid("getSelections");
-            /* getSelections */
-            var selectedRow = $('#yglb').datagrid('getSelected'); //获取选中行   /* getSelected */
-            if (rows.length == 0) {
-                $.messager.show({
-                    title: "操作提示",
-                    msg: "请选择要删除的记录！",
-                    showType: 'show', //showType3种设置值:"show"、"slide"、"fade"
-                    timeout: 5000
-                    //超时设置
-                });
-                return flase;
-            }
-            $.messager.confirm('确认', '确认删除?', function (row) {
-                if (row) {
-                    console.info(selectedRow.id);
-                    $
-                        .ajax({
-                            url: '/deluser?id=' + selectedRow.id,
-                            success: function () {
-                                $.messager.show({
-                                    title: "操作提示",
-                                    msg: "删除成功！",
-                                    showType: 'slide', //showType3种设置值:"show"、"slide"、"fade"
-                                    timeout: 3000
-                                    //超时设置
-                                });
-                                //						 $('#rescueTaskTable').datagrid('clearSelections');
-                                //						$('#yglb').datagrid('deleteRow',index);
-                                $('#yglb').datagrid('reload');
-                            },
-                            error: function () {
-                                $.messager.alert('提示信息', '删除失败，请联系管理员！',
-                                    'warning');
-                            }
-                        });
-
-                }
-            })
-        };
-
-        /* 	function del(index){  //删除操作
-         $.messager.confirm('确认','确认删除?',function(row){
-         if(row){
-         var selectedRow = $('#yglb').datagrid('getSelected');  //获取选中行
-         $.ajax({
-         url:'/deluser?id='+selectedRow.id,
-         //加了个type，作用是以后不管什么删除，都可以转到这个ashx中处理
-         success:function(){alert('删除成功');}
-         });
-         $('#yglb').datagrid('deleteRow',index);
-         }
-         })
-         } */
-        /* 添加用户,打开对话框 */
-        function addUser() {
+        $('#resetBtn').click(function () {
+            console.info('点了清空按钮');
             $('#ff').form('clear');
-            $("#addUser").dialog('open');
-        }
-        /* 添加用户信息提交 */
-        function addUserCommit() {
+        })
+        $('#resetBtn2').click(function () {
 
-            $('#ff').form('submit', {
-                url: "adduser",
-                onSubmit: function () { //表单提交前的回调函数
-                    var isValid = $(this).form('validate');//验证表单中的一些控件的值是否填写正确，比如某些文本框中的内容必须是数字
-                    if (!isValid) {
+            $("#age").textbox('setValue', '');
+            $("#pwd").textbox('setValue', '');
+            $('#cc').combobox('setValue', '');
+            $('#setTime').datetimebox('setValue', '');
+        })
 
-                    }
-                    console.info(isValid);
-                    return isValid; // 如果验证不通过，返回false终止表单提交
-                    /*   alert("进入回调函数"); */
-                },
+        $('#submitBtn').click(function () {
+            addUserCommit();
+        })
+        $('#submitBtn2').click(function () {
+            udpUserCommit();
+        })
 
-                success: function (data) { //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
-                    /* alert("进入成功方法"); */
-                    if (data > 0) {
-                        console.info(data);
-                        $.messager.show({
-                            title: '提示消息',
-                            msg: '提交成功',
-                            showType: 'show',
-                            timeout: 1000,
-                            style: {
-                                right: '',
-                                bottom: ''
-                            }
-                        });
-                        $('#yglb').datagrid('reload'); // 重新载入当前页面数据
-                        $("#addUser").dialog('close'); //关闭窗口
-                    } else {
-                        $.messager.alert('提示信息', '提交失败，请联系管理员！', 'warning');
-                    }
-                }
+    });
+
+    $("#yglb").datagrid({
+        onRowContextMenu: function (e, rowIndex, rowData) { //右键时触发事件
+            //三个参数：e里面的内容很多，真心不明白，rowIndex就是当前点击时所在行的索引，rowData当前行的数据
+            e.preventDefault(); //阻止浏览器捕获右键事件
+            $(this).datagrid("clearSelections"); //取消所有选中项
+            $(this).datagrid("selectRow", rowIndex); //根据索引选中该行
+            $('#menu').menu('show', {
+                //显示右键菜单
+                left: e.pageX,//在鼠标点击处显示菜单
+                top: e.pageY
             });
+            e.preventDefault(); //阻止浏览器自带的右键菜单弹出
         }
-        /* 编辑用户信息,首先选中要修改的行,然后打开dialog,修改后提交 */
-        function upd() {
-            console.info("进入编辑");
-            //修改时要获取选择到的行 getSelections
-            var rows = $("#yglb").datagrid("getSelections");
-            /* getSelections */
-            var selectedRow = $('#yglb').datagrid('getSelected');
-            /* getSelected */
-            console.info(selectedRow);
-            //如果只选择了一行则可以进行修改，否则不操作
-            if (rows.length == 1) {
-                console.info(selectedRow);
-                console.info(rows.length);
-                console.info(rows);
-                /* console.info(selectedRow.age); */
-                $("#test").hide();
-                $("#udpId").textbox('setValue', selectedRow.id);
-                $("#name").textbox('setValue', selectedRow.name);
-                $("#age").textbox('setValue', selectedRow.age);
-                $("#pwd").textbox('setValue', selectedRow.pwd);
-                if (selectedRow.sex == "男") {
-                    $(".upSex[value='男']").attr("checked", true);
-                } else if (selectedRow.sex == "女") {
-                    $(".upSex[value='女']").attr("checked", true);
-                }
-                ;
-                /* console.info(selectedRow.selectedRow.status); */
-                $('#cc').combobox('setValue', '1');
-                $('#setTime')
-                    .datetimebox('setValue', selectedRow.inductionTime);
-                $("#updUser").dialog('open');
+    });
 
-            } else {
-                $.messager.show({
-                    title: "操作提示",
-                    msg: "请选择要修改的记录！",
-                    showType: 'fade', //showType3种设置值:"show"、"slide"、"fade"
-                    timeout: 3000
-                    //超时设置
-                });
+    /* 删除用户 */
+    function del(index) { //删除操作
+        //修改时要获取选择到的行 getSelections
+        var rows = $("#yglb").datagrid("getSelections");
+        /* getSelections */
+        var selectedRow = $('#yglb').datagrid('getSelected'); //获取选中行   /* getSelected */
+        if (rows.length == 0) {
+            $.messager.show({
+                title: "操作提示",
+                msg: "请选择要删除的记录！",
+                showType: 'show', //showType3种设置值:"show"、"slide"、"fade"
+                timeout: 5000
+                //超时设置
+            });
+            return flase;
+        }
+        $.messager.confirm('确认', '确认删除?', function (row) {
+            if (row) {
+                console.info(selectedRow.id);
+                $
+                    .ajax({
+                        url: '/deluser?id=' + selectedRow.id,
+                        success: function () {
+                            $.messager.show({
+                                title: "操作提示",
+                                msg: "删除成功！",
+                                showType: 'slide', //showType3种设置值:"show"、"slide"、"fade"
+                                timeout: 3000
+                                //超时设置
+                            });
+                            //						 $('#rescueTaskTable').datagrid('clearSelections');
+                            //						$('#yglb').datagrid('deleteRow',index);
+                            $('#yglb').datagrid('reload');
+                        },
+                        error: function () {
+                            $.messager.alert('提示信息', '删除失败，请联系管理员！',
+                                'warning');
+                        }
+                    });
 
             }
-        };
+        })
+    };
 
-        /* 修改用户信息提交 */
-        function udpUserCommit() {
-            console.info("进入修改页面提交数据");
-            $('#fu').form('submit', {
-                url: "udpuser",
-                onSubmit: function () { //表单提交前的回调函数
-                    var isValid = $(this).form('validate');//验证表单中的一些控件的值是否填写正确，比如某些文本框中的内容必须是数字
-                    if (!isValid) {
+    /* 	function del(index){  //删除操作
+     $.messager.confirm('确认','确认删除?',function(row){
+     if(row){
+     var selectedRow = $('#yglb').datagrid('getSelected');  //获取选中行
+     $.ajax({
+     url:'/deluser?id='+selectedRow.id,
+     //加了个type，作用是以后不管什么删除，都可以转到这个ashx中处理
+     success:function(){alert('删除成功');}
+     });
+     $('#yglb').datagrid('deleteRow',index);
+     }
+     })
+     } */
+    /* 添加用户,打开对话框 */
+    function addUser() {
+        $('#ff').form('clear');
+        $("#addUser").dialog('open');
+    }
+    /* 添加用户信息提交 */
+    function addUserCommit() {
 
-                    }
-                    console.info(isValid);
-                    return isValid; // 如果验证不通过，返回false终止表单提交
-                    /*   alert("进入回调函数"); */
-                },
+        $('#ff').form('submit', {
+            url: "adduser",
+            onSubmit: function () { //表单提交前的回调函数
+                var isValid = $(this).form('validate');//验证表单中的一些控件的值是否填写正确，比如某些文本框中的内容必须是数字
+                if (!isValid) {
 
-                success: function (data) { //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
-                    console.info(data);
-
-                    if (data == 0) {
-                        console.info(data);
-                        $("#updUser").dialog('close'); //关闭窗口
-                        $.messager.show({
-                            title: '提示消息',
-                            msg: '提交成功',
-                            showType: 'show',
-                            timeout: 1000,
-                            style: {
-                                right: '',
-                                bottom: ''
-                            }
-                        });
-                        $('#yglb').datagrid('reload'); // 重新载入当前页面数据
-
-                    } else {
-                        $.messager.alert('提示信息', '提交失败，请联系管理员！', 'warning');
-                    }
                 }
+                console.info(isValid);
+                return isValid; // 如果验证不通过，返回false终止表单提交
+                /*   alert("进入回调函数"); */
+            },
+
+            success: function (data) { //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
+                /* alert("进入成功方法"); */
+                if (data > 0) {
+                    console.info(data);
+                    $.messager.show({
+                        title: '提示消息',
+                        msg: '提交成功',
+                        showType: 'show',
+                        timeout: 1000,
+                        style: {
+                            right: '',
+                            bottom: ''
+                        }
+                    });
+                    $('#yglb').datagrid('reload'); // 重新载入当前页面数据
+                    $("#addUser").dialog('close'); //关闭窗口
+                } else {
+                    $.messager.alert('提示信息', '提交失败，请联系管理员！', 'warning');
+                }
+            }
+        });
+    }
+    /* 编辑用户信息,首先选中要修改的行,然后打开dialog,修改后提交 */
+    function upd() {
+        console.info("进入编辑");
+        //修改时要获取选择到的行 getSelections
+        var rows = $("#yglb").datagrid("getSelections");
+        /* getSelections */
+        var selectedRow = $('#yglb').datagrid('getSelected');
+        /* getSelected */
+        console.info(selectedRow);
+        //如果只选择了一行则可以进行修改，否则不操作
+        if (rows.length == 1) {
+            console.info(selectedRow);
+            console.info(rows.length);
+            console.info(rows);
+            /* console.info(selectedRow.age); */
+            $("#test").hide();
+            $("#udpId").textbox('setValue', selectedRow.id);
+            $("#name").textbox('setValue', selectedRow.name);
+            $("#age").textbox('setValue', selectedRow.age);
+            $("#pwd").textbox('setValue', selectedRow.pwd);
+            if (selectedRow.sex == "男") {
+                $(".upSex[value='男']").attr("checked", true);
+            } else if (selectedRow.sex == "女") {
+                $(".upSex[value='女']").attr("checked", true);
+            }
+            ;
+            /* console.info(selectedRow.selectedRow.status); */
+            $('#cc').combobox('setValue', '1');
+            $('#setTime')
+                .datetimebox('setValue', selectedRow.inductionTime);
+            $("#updUser").dialog('open');
+
+        } else {
+            $.messager.show({
+                title: "操作提示",
+                msg: "请选择要修改的记录！",
+                showType: 'fade', //showType3种设置值:"show"、"slide"、"fade"
+                timeout: 3000
+                //超时设置
             });
+
         }
-    </script>
+    };
+
+    /* 修改用户信息提交 */
+    function udpUserCommit() {
+        console.info("进入修改页面提交数据");
+        $('#fu').form('submit', {
+            url: "udpuser",
+            onSubmit: function () { //表单提交前的回调函数
+                var isValid = $(this).form('validate');//验证表单中的一些控件的值是否填写正确，比如某些文本框中的内容必须是数字
+                if (!isValid) {
+
+                }
+                console.info(isValid);
+                return isValid; // 如果验证不通过，返回false终止表单提交
+                /*   alert("进入回调函数"); */
+            },
+
+            success: function (data) { //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
+                console.info(data);
+
+                if (data == 0) {
+                    console.info(data);
+                    $("#updUser").dialog('close'); //关闭窗口
+                    $.messager.show({
+                        title: '提示消息',
+                        msg: '提交成功',
+                        showType: 'show',
+                        timeout: 1000,
+                        style: {
+                            right: '',
+                            bottom: ''
+                        }
+                    });
+                    $('#yglb').datagrid('reload'); // 重新载入当前页面数据
+
+                } else {
+                    $.messager.alert('提示信息', '提交失败，请联系管理员！', 'warning');
+                }
+            }
+        });
+    };
+    function retUser() {
+        $('#xzUser').window('open');
+    }
+</script>
