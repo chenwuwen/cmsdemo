@@ -7,17 +7,8 @@
           <element id="module-output" name="cmsdemo" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.4.1" />
-          <element id="library" level="project" name="Maven: javax.xml.stream:stax-api:1.0-2" />
-          <element id="library" level="project" name="Maven: org.codehaus.woodstox:stax2-api:3.1.4" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-web/1.4.1.BUILD-SNAPSHOT/spring-boot-starter-web-1.4.1.BUILD-20160920.220833-116.jar" output-file-name="spring-boot-starter-web-1.4.1.BUILD-SNAPSHOT.jar" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter/1.4.1.BUILD-SNAPSHOT/spring-boot-starter-1.4.1.BUILD-20160920.220833-115.jar" output-file-name="spring-boot-starter-1.4.1.BUILD-SNAPSHOT.jar" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-logging/1.4.1.BUILD-SNAPSHOT/spring-boot-starter-logging-1.4.1.BUILD-20160920.220833-115.jar" output-file-name="spring-boot-starter-logging-1.4.1.BUILD-SNAPSHOT.jar" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.7" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.7" />
-          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
-          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" />
-          <element id="library" level="project" name="Maven: org.slf4j:log4j-over-slf4j:1.7.21" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.2.4.Final" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
@@ -30,8 +21,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.3.RELEASE" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/1.4.1.BUILD-SNAPSHOT/spring-boot-1.4.1.BUILD-20160920.220833-116.jar" output-file-name="spring-boot-1.4.1.BUILD-SNAPSHOT.jar" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/1.4.1.BUILD-SNAPSHOT/spring-boot-autoconfigure-1.4.1.BUILD-20160920.220833-115.jar" output-file-name="spring-boot-autoconfigure-1.4.1.BUILD-SNAPSHOT.jar" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-thymeleaf/1.4.1.BUILD-SNAPSHOT/spring-boot-starter-thymeleaf-1.4.1.BUILD-20160920.220833-115.jar" output-file-name="spring-boot-starter-thymeleaf-1.4.1.BUILD-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf-spring4:2.1.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf:2.1.5.RELEASE" />
@@ -63,6 +52,8 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.5" />
           <element id="library" level="project" name="Maven: org.eclipse.jdt.core.compiler:ecj:4.5.1" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/1.4.1.BUILD-SNAPSHOT/spring-boot-1.4.1.BUILD-20160920.220833-116.jar" output-file-name="spring-boot-1.4.1.BUILD-SNAPSHOT.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/1.4.1.BUILD-SNAPSHOT/spring-boot-autoconfigure-1.4.1.BUILD-20160920.220833-115.jar" output-file-name="spring-boot-autoconfigure-1.4.1.BUILD-SNAPSHOT.jar" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-aop/1.4.1.BUILD-SNAPSHOT/spring-boot-starter-aop-1.4.1.BUILD-20160920.220833-116.jar" output-file-name="spring-boot-starter-aop-1.4.1.BUILD-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
@@ -72,13 +63,18 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
           <element id="library" level="project" name="Maven: org.json:json:20140107" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.3.RELEASE" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.7" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.7" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
+          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" />
+          <element id="library" level="project" name="Maven: org.slf4j:log4j-over-slf4j:1.7.21" />
           <element id="library" level="project" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0" />
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-jdbc/1.4.1.BUILD-SNAPSHOT/spring-boot-starter-jdbc-1.4.1.BUILD-20160920.220833-114.jar" output-file-name="spring-boot-starter-jdbc-1.4.1.BUILD-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:1.3.0" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.3.1" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.20" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.1" />
-          <element id="library" level="project" name="Maven: apache-beanutils:commons-beanutils:1.7.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

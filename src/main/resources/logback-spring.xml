@@ -1,14 +1,18 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <configuration scan="true" scanPeriod="60 seconds">
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+        <!--<level>DEBUG</level>-->
+        <!--</filter>-->
         <encoder>
             <pattern>%d{yyyy-M-d HH:mm:ss} %t %p %m%n</pattern>
         </encoder>
     </appender>
+    <!--输出到文件-->
     <appender name="springboot"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <Encoding>UTF-8</Encoding>
+        <!-- <Encoding>UTF-8</Encoding> -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>logs/logback/springboot_%d{yyyy-M-d}.log
             </FileNamePattern>
@@ -18,10 +22,10 @@
             <pattern>%d{yyyy-M-d HH:mm:ss} %t %p %m%n</pattern>
         </encoder>
     </appender>
-    <appender name="smile"
+    <appender name="hmcms"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>logs/logback/smile_%d{yyyy-M-d}.log
+            <FileNamePattern>logs/logback/hmcms_%d{yyyy-M-d}.log
             </FileNamePattern>
             <MaxHistory>10</MaxHistory>
         </rollingPolicy>
@@ -29,18 +33,21 @@
             <pattern>%d{yyyy-M-d HH:mm:ss} %t %p %m%n</pattern>
         </encoder>
     </appender>
-
-    <logger name="org.springframework.boot" level="debug"
+    <!-- name包必须能够扫描到所以类，包括启动类,输出本项目日志信息到控制台 -->
+    <logger name="com.hmcms" level="DEBUG" additivity="false">
+        <appender-ref ref="stdout"/>
+    </logger>
+    <!--输出SpringBoot等级信息到日志文件-->
+    <logger name="org.springframework.boot" level="INFO"
             additivity="false">
         <appender-ref ref="springboot"/>
     </logger>
-    name包必须能够扫描到所以类，包括启动类
-    <logger>
-        <span style="color:#ff0000;">name="com.hmcms.cmsdemo"</span>
-        level="debug" additivity="false">
-        <appender-ref ref="smile"/>
+    <!-- name包必须能够扫描到所以类，包括启动类,输出本项目等级信息到日志文件 -->
+    <logger name="com.hmcms" level="DEBUG" additivity="false">
+        <appender-ref ref="hmcms"/>
     </logger>
+    <!--root级别的信息-->
     <root level="info">
         <appender-ref ref="stdout"/>
     </root>
-</configuration> -->
+</configuration>

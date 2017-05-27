@@ -22,7 +22,7 @@ public class PositionServiceImpl implements IPositionService {
 	@Override
 	public List selectAllPosition() {
 		List list = positionMapper.selectAll();
-		System.out.println("Service方法:"+list.size());
+//		System.out.println("Service方法:"+list.size());
 		return list;
 	}
 

@@ -15,7 +15,15 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss  #设置json返回日期格式
     timeZone: GMT+8   				#设置时区,否则可能前台返回时间与数据库不一致
+
 mybatis:  
     mapperLocations: classpath:mapper/*.xml  
     typeAliasesPackage: com.hmcmsdemo.model
     config-locations: classpath:mybatis-conf.xml
+#这个不配置也可以resource中有了logback.xml即可实现自定义日志实现
+#logging:
+#     config: classpath:logback-spring.xml
+#     debug: true
+#     level: root:DEBUG
+#     path: classpath:logs
+#     file: cms.log

@@ -17,7 +17,7 @@ public class PositionController {
 	@RequestMapping("/getposition")
 	@ResponseBody
 	public List getposition(){
-		System.out.println("进来方法---------------------");
+//		System.out.println("进来方法---------------------");
 		List list = positionService.selectAllPosition();
 //		System.out.println("返回List对象的值为"+list.size());
 		return list;
