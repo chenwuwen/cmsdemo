@@ -1,13 +1,100 @@
 <div class="easyui-layout" data-options="fit:true">
-	<div class="easyui-panel pd5" data-options="fit:true,border:true">
-        <p style="font-size:14px">Here is the content loaded via AJAX.</p>
-        <ul>
-            <li>easyui is a collection of user-interface plugin based on jQuery.</li>
-            <li>easyui provides essential functionality for building modern, interactive, javascript applications.</li>
-            <li>using easyui you don't need to write many javascript code, writing some HTML markup.</li>
-            <li>complete framework for HTML5 web page.</li>
-            <li>easyui save your time and scales while developing your products.</li>
-            <li>easyui is very easy but powerful.</li>
-        </ul>
+    <div region="center">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="big()">变大</a>
+        <!-- header:'dd'这个属性是dialog全屏化很重要的一点，主要是去除dialog的标题边框（同时注意不要设置title），fit:true是让dialog最大化-->
+        <div id="hit" class="easyui-dialog" data-options="fit:true,border:false,header:'dd'" closed="true">
+            <div class="easyui-layout" data-options="fit:true">
+                <div region="north" style="height: 30px;width: 100%;overflow: hidden" >
+                    <div style="text-align: left">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closebig()">关闭</a>
+                    </div>
+                    <!--<div style="width: 100%;height: auto;height: 35px;border: 1px solid #78787A;margin-top:10px">-->
+                        <!--<div id="dkjl" style="float: left;line-height: 35px;">111111111</div>-->
+                        <!--<div style="text-align: right;line-height: 35px;">-->
+                            <!--<a href="javascript:void(0)" class="easyui-linkbutton" onclick="explorerExcel()">导出月报</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+                <div region="center" data-options="fit:true">
+                    <div id="yjl"></div>
+                    <div id="abc" style="padding: 5px; height: auto">
+                            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="explorerExcel()">导出月报</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    function getval() {
+        var title = '';
+        title = 'XXX';
+        $("#yjl").datagrid({
+            url: "/yglb",
+            title: title,
+            pagination: true,// 是否分页
+            pageSize: 12,//条数
+            pageList: [3, 6, 12],//选择条数
+            fit: true,//大自动适应
+            selectOnCheck: true,//如果设置为true，单击一个复选框，将始终选择行。如果为false，不会选择行选中该复选框。
+            loadMsg: "正在加载员工（职员）数据，请稍等...",
+            fitColumn: false, //列自适应宽度
+            striped: true,
+            rownumbers: true,
+            columns: [[{
+                title: '主键',
+                field: 'Id',
+                //				hidden : true,
+                checkbox: true
+            }, {
+                title: '姓名',
+                field: 'name',
+            }, {
+                title: '密码',
+                field: 'pwd',
+                align: 'center'
+            }, {
+                title: '年龄',
+                field: 'age',
+                align: "center",
+            }, {
+                title: '性别',
+                field: 'sex',
+            }, {
+                title: '状态',
+                field: 'status',
+                formatter: function (value) {
+                    if (value == "1") {
+                        return '领导';
+                    } else if (value == "2") {
+                        return '员工';
+                    } else {
+                        return '未设置';
+                    }
+                }
+            }, {
+                title: '入职时间',
+                field: 'inductionTime',
+
+            }]],
+            toolbar: '#abc',
+        })
+    }
+
+    function big() {
+        getval();
+        setTimeout("$('#hit').dialog('open')", 1000);
+    }
+
+    function closebig() {
+        $("#hit").dialog('close')
+    }
+
+    function explorerExcel() {
+        alert("导出excel")
+    }
+
+
+</script>
